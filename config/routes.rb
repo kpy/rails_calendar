@@ -1,4 +1,8 @@
 RailsCalendar::Application.routes.draw do
+  get "static_pages/home"
+
+  get "static_pages/help"
+
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "sign_up" => "users#new", :as => "sign_up"
