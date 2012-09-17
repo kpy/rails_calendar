@@ -1,0 +1,34 @@
+<h1>Registrieren</h1>
+
+<%= form_for @user do |f| %>
+  <!-- Bei Fehlern diese anzeigen -->
+  <% if @user.errors.any? %>
+    <div class="error_message">
+	  <h2>Nicht zul&auml;ssige Aktion</h2>
+	  <ul>
+	    <% for message in @user.errors.full_messages %>
+	      <li><%= message %></li>
+	    <% end %>
+	  </ul>
+    </div>
+  <% end %>
+  
+  <!-- Registrierungsformular -->
+  <p>
+	<%= f.label "Name:" %><br />
+	<%= f.text_field :name %>
+  </p>
+  <p>
+	<%= f.label "Email:" %><br />
+	<%= f.text_field :email %>
+  </p>
+  <p>
+	<%= f.label "Passwort:" %><br />
+	<%= f.password_field :password %>
+  </p>
+  <p>
+	<%= f.label "Passwort wiederholen:" %><br />
+	<%= f.password_field :password_confirmation %>
+  </p>
+  <p class ="button"><%= f.submit "Abschicken" %></p>
+<% end %>
