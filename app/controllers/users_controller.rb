@@ -7,9 +7,13 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(params[:user])
   	if @user.save
-	    redirect_to root_url, :notice => "Vielen Dank für Ihre Anmeldung"
+	    redirect_to root_url, :notice => "Hallo #{@user.name}, vielen Dank für Ihre Anmeldung"
 	  else
 	    render "new"
 	  end
   end 
+
+  def show
+    @user = User.find(params[:id])
+  end
 end

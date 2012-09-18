@@ -16,23 +16,23 @@
   
   <!-- Registrierungsformular -->
   <div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
+    <div class="span6 offset3">
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages' %>
+        <%= f.label :name, "Name:" %>
+        <%= f.text_field :name %>
 
-      <%= f.label :name, "Name:" %>
-      <%= f.text_field :name %>
+        <%= f.label :email, "Email:" %>
+        <%= f.text_field :email %>
 
-      <%= f.label :email, "Email:" %>
-      <%= f.text_field :email %>
+        <%= f.label :password, "Passwort:" %>
+        <%= f.password_field :password %>
 
-      <%= f.label :password, "Passwort:" %>
-      <%= f.password_field :password %>
+        <%= f.label :password_confirmation, "Passwort Wiederholung:" %>
+        <%= f.password_field :password_confirmation %>
 
-      <%= f.label :password_confirmation, "Passwort Wiederholung:" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Registrierung abschicken", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
+        <%= f.submit "Registrierung abschicken", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
 </div>
 <% end %>
