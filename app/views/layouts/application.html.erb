@@ -5,23 +5,16 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>  
 </head>
 <body>
-  <div id="user_nav">
-	<% if current_user %>
-	  Hallo <%= current_user.name %>
-	  <%= link_to "Logout", logout_path %>
-	<% else %>
-	  <%= link_to "Registrieren", sign_up_path %> oder
-	  <%= link_to "Login", login_path %>
-	<% end %>
-  </div>
-
+  <%= render 'layouts/header' %>
   <% flash.each do |name, msg| %>
 	<%= content_tag :div, msg, :id => "flash_#{name}" %>
   <% end %>
-
-  <%= yield %>
-
+  <div class="container">
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </div>
 </body>
 </html>
