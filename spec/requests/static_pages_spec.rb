@@ -2,45 +2,29 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  let(:base_title) { "RailsCalendar" }
+  subject { page }
   describe "Home page" do
-    it "should have the h1 'Home'" do
-      visit '/static_pages/home'
-      page.should have_selector('h1', :text => 'Home')
-    end
-
-    it "should have the title 'Home'" do
-      visit '/static_pages/home'
-      page.should have_selector('title',
-                        :text => "#{base_title} | Home")
-    end
+    before { visit root_path }
+    it { should have_selector('h1', :text => 'Willkommen beim RailsCalendar') }
+    it { should have_selector('title', :text => full_title('')) }
+    it { should have_selector('title', :text => '| Home') }
   end
 
   describe "Help page" do
-
-    it "should have the h1 'Help'" do
-      visit '/static_pages/help'
-      page.should have_selector('h1', :text => 'Help')
-    end
-
-    it "should have the title 'Help'" do
-      visit '/static_pages/help'
-      page.should have_selector('title',
-                        :text => "#{base_title} | Help")
-    end
+    before { visit help_path }
+    it { should have_selector('h1', :text => 'Help') }
+    it { should have_selector('title', :text => full_title('Help')) }
   end
 
   describe "Impressum page" do
+    before { visit impressum_path }
+    it { should have_selector('h1', :text => 'Impressum') }
+    it { should have_selector('title', :text => full_title('Impressum')) }
+  end
 
-    it "should have the h1 'Impressum'" do
-      visit '/static_pages/impressum'
-      page.should have_selector('h1', :text => 'Impressum')
-    end
-
-    it "should have the title 'Impressum'" do
-      visit '/static_pages/impressum'
-      page.should have_selector('title',
-                    :text => "#{base_title} | Impressum")
-    end
+  describe "Contact page" do
+    before { visit contact_path }
+    it { should have_selector('h1', :text => 'Kontakt') }
+    it { should have_selector('title', :text => full_title('Kontakt')) }
   end
 end

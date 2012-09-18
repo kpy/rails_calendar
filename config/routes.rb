@@ -1,5 +1,5 @@
 RailsCalendar::Application.routes.draw do
-  get "appointments/new"
+  get "users/new"
 
   get "static_pages/home", :as => "home"
   get "static_pages/help", :as => "help"
