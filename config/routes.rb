@@ -6,9 +6,9 @@ RailsCalendar::Application.routes.draw do
   get "static_pages/impressum", :as => "impressum"
   get "static_pages/contact", :as => "contact"
 
-  get "logout" => "sessions#destroy", :as => "logout", :via => :delete
-  get "login" => "sessions#new", :as => "login"
-
+  get "signout" => "sessions#destroy", :via => :delete
+  get "signin" => "sessions#new"
+  match '/signout', :to => 'sessions#destroy', :via => :delete
   get "sign_up" => "users#new", :as => "sign_up"
   
   root :to => "static_pages#home"
