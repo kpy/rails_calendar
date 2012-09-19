@@ -1,4 +1,13 @@
 RailsCalendar::Application.routes.draw do
+  get "termin/ansehen"
+  get "termin/hinzufuegen"
+  get "termin/bearbeiten"
+  get "termin/loeschen"
+  get "termin/freigeben"
+  get "home/kontakt"
+  get "home/impressum"
+  get "home/index"
+
   get "users/new"
 
   get "static_pages/home", :as => "home"
@@ -11,7 +20,7 @@ RailsCalendar::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy', :via => :delete
   get "sign_up" => "users#new", :as => "sign_up"
   
-  root :to => "static_pages#home"
+  root :to => "home#index"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   
